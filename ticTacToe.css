@@ -1,0 +1,16 @@
+.middleRow {
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: black;
+    border-bottom-color: black;
+}
+.middleCol {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-left-color: black;
+    border-right-color: black;
+}
