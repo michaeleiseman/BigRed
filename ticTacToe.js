@@ -39,6 +39,11 @@ function onclick(){
     const winner = checkForWin();
     if(winner){
         document.getElementById("result").textContent = "Player " + player + " won."
+        for(const cell of gameboard.getElementsByClassName("cell")){
+            if(cell.textContent == ""){
+                cell.removeEventListener("click", onclick, false);
+            }
+        }
     } else if(numberOfMoves == 9){
         document.getElementById("result").textContent = "Tie Game"
     }
