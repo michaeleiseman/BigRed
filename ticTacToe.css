@@ -32,5 +32,13 @@
     font-weight: bold;
 }
 #gameboard {
+    position: relative;
+}
+.wholeGame {
     margin-top: 20px;
+}
+#threeInARow {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
