@@ -21,6 +21,12 @@ function reset(){
         cell.addEventListener("click", onclick, false);
     }
     document.getElementById("result").textContent = "";
+    document.getElementById("threeInARow").setAttribute("width", "0");
+    document.getElementById("threeInARow").setAttribute("height", "0");
+    document.getElementById("line").setAttribute("x1", "0");
+    document.getElementById("line").setAttribute("x2","0");
+    document.getElementById("line").setAttribute("y1", "0");
+    document.getElementById("line").setAttribute("y2", "0");
 }
 
 const winningCombinations = [
@@ -36,23 +42,50 @@ const winningCombinations = [
         x1: 0,
         y1: firstRow.offsetHeight + secondRow.offsetHeight/2,
         x2: secondRow.offsetWidth,
-        y2: firstRow.offsetHeight/2 + secondRow.offsetHeight/2,
+        y2: firstRow.offsetHeight/2 + secondRow.offsetHeight/2
     },
     {
         cells: [cells[2][0], cells[2][1], cells[2][2]],
         x1: 0,
         y1: firstRow.offsetHeight + secondRow.offsetHeight + thirdRow.offsetHeight/2,
         x2: thirdRow.offsetWidth,
-        y2: firstRow.offsetHeight + secondRow.offsetHeight + thirdRow.offsetHeight/2,
+        y2: firstRow.offsetHeight + secondRow.offsetHeight + thirdRow.offsetHeight/2
     },
-
-    [cells[1][0], cells[1][1], cells[1][2]],
-    [cells[2][0], cells[2][1], cells[2][2]],
-    [cells[0][0], cells[1][0], cells[2][0]],
-    [cells[0][1], cells[1][1], cells[2][1]],
-    [cells[0][2], cells[1][2], cells[2][2]],
-    [cells[0][0], cells[1][1], cells[2][2]],
-    [cells[0][2], cells[1][1], cells[2][0]]
+    {
+        cells: [cells[0][0], cells[1][0], cells[2][0]],
+        x1: cells[0][0].offsetWidth/2,
+        y1: 0,
+        x2: cells[0][0].offsetWidth/2,
+        y2: gameboard.offsetHeight
+    },
+    {
+        cells: [cells[0][1], cells[1][1], cells[2][1]],
+        x1: cells[0][0].offsetWidth + cells[0][1].offsetWidth/2,
+        y1: 0,
+        x2: cells[0][0].offsetWidth + cells[0][1].offsetWidth/2,
+        y2: gameboard.offsetHeight
+    },
+    {
+        cells: [cells[0][2], cells[1][2], cells[2][2]],
+        x1: cells[0][0].offsetWidth + cells[0][1].offsetWidth + cells[0][2].offsetWidth/2,
+        y1: 0,
+        x2: cells[0][0].offsetWidth + cells[0][1].offsetWidth + cells[0][2].offsetWidth/2,
+        y2: gameboard.offsetHeight
+    },
+    {
+        cells: [cells[0][0], cells[1][1], cells[2][2]],
+        x1: 0,
+        y1: 0,
+        x2: gameboard.offsetWidth,
+        y2: gameboard.offsetHeight
+    },
+    {
+        cells: [cells[2][0], cells[1][1], cells[0][2]],
+        x1: 0,
+        y1: gameboard.offsetWidth,
+        x2: gameboard.offsetWidth,
+        y2: 0
+    }
 ]
 function onclick(){
     this.removeEventListener("click", onclick, false);
@@ -65,6 +98,12 @@ function onclick(){
     const winner = checkForWin();
     if(winner){
         document.getElementById("result").textContent = "Player " + player + " won."
+        document.getElementById("threeInARow").setAttribute("width", gameboard.offsetWidth.toString());
+        document.getElementById("threeInARow").setAttribute("height", gameboard.offsetHeight.toString());
+        document.getElementById("line").setAttribute("x1", winner.x1);
+        document.getElementById("line").setAttribute("x2", winner.x2);
+        document.getElementById("line").setAttribute("y1", winner.y1);
+        document.getElementById("line").setAttribute("y2", winner.y2);
         for(const cell of gameboard.getElementsByClassName("cell")){
             if(cell.textContent == ""){
                 cell.removeEventListener("click", onclick, false);
@@ -76,9 +115,9 @@ function onclick(){
 }
 function checkForWin() {
     for(const combination of winningCombinations){
-        if(combination[0].textContent !== ""){
-            if(combination[0].textContent == combination[1].textContent && combination[0].textContent == combination[2].textContent){
-                return true;
+        if(combination.cells[0].textContent !== ""){
+            if(combination.cells[0].textContent == combination.cells[1].textContent && combination.cells[0].textContent == combination.cells[2].textContent){
+                return combination;
             }
         }
     }
