@@ -16,4 +16,29 @@
 }
 .cell {
     height: 200px;
+    font-size: 148px;
+    text-align: center;
+}
+#reset {
+    position: relative;
+    display: block;
+    margin: auto;
+}
+#result {
+    position: relative;
+    left: 100px;
+    top: 300px;
+    font-size: 24px;
+    font-weight: bold;
+}
+#gameboard {
+    position: relative;
+}
+.wholeGame {
+    margin-top: 20px;
+}
+#threeInARow {
+    position: absolute;
+    top: 0;
+    left: 0;
 }

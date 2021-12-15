@@ -9,12 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container wholeGame">
         <div class = "row">
-            <div id = "reset" class ="col">
+            <div id = "reset" class ="col-2">
                 <button id = "reset" class = "btn-primary">reset</button>
             </div>
-            <div id = "gameboard" class = "col">
+            <div id = "gameboard" class = "col-8">
+                <svg id = "threeInARow" height = "0" width = "0"> 
+                    <line id = "line" x1 = "0" y1 = "0" x2 = "0" y2 = "0" stroke = "black" stroke-width = "5"></line>
+                </svg>
                 <div class="row">
                     <div class="col cell"></div>
         
@@ -42,7 +45,7 @@
                     
                 </div>
             </div>
-            <div id = "result" class ="col"></div>
+            <div id = "result" class ="col-2"></div>
         </div>
         
     </div>
