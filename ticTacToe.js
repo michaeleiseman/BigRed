@@ -42,7 +42,7 @@ const winningCombinations = [
         x1: 0,
         y1: firstRow.offsetHeight + secondRow.offsetHeight/2,
         x2: secondRow.offsetWidth,
-        y2: firstRow.offsetHeight/2 + secondRow.offsetHeight/2
+        y2: firstRow.offsetHeight + secondRow.offsetHeight/2
     },
     {
         cells: [cells[2][0], cells[2][1], cells[2][2]],
@@ -82,7 +82,7 @@ const winningCombinations = [
     {
         cells: [cells[2][0], cells[1][1], cells[0][2]],
         x1: 0,
-        y1: gameboard.offsetWidth,
+        y1: gameboard.offsetHeight,
         x2: gameboard.offsetWidth,
         y2: 0
     }
